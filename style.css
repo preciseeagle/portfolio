@@ -1,0 +1,21 @@
+body {
+  font: 100%/1.5 system-ui;
+  max-width: 50rem;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/* images scale down instead of overflowing on narrow screens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* horizontal nav that wraps when the window gets narrow */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+}
