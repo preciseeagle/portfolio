@@ -11,7 +11,7 @@
       <ul>
         <li><a href="../">Home</a></li>
         <li><a href="../projects/">Projects</a></li>
-        <li><a href="../contact/">Contact</a></li>
+        <li><a href="../contact/" class="current">Contact</a></li>
         <li><a href="../cv/">CV</a></li>
         <li><a href="https://github.com/preciseeagle" target="_blank">GitHub</a></li>
       </ul>
@@ -20,21 +20,18 @@
     <main>
       <h1>Contact</h1>
       <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-        <p>
-          <label>Your email
-            <input type="email" name="email" value="you@example.com" />
-          </label>
-        </p>
-        <p>
-          <label>Subject
-            <input name="subject" value="Hello from your portfolio site" />
-          </label>
-        </p>
-        <p>
-          <label>Message
-            <textarea name="body">Hi Derek, </textarea>
-          </label>
-        </p>
+        <label>
+          <span>Your email</span>
+          <input type="email" name="email" value="you@example.com" />
+        </label>
+        <label>
+          <span>Subject</span>
+          <input name="subject" value="Hello from your portfolio site" />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="body">Hi Derek, </textarea>
+        </label>
         <button>Send</button>
       </form>
     </main>
