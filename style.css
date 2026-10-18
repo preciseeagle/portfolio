@@ -10,6 +10,7 @@ body {
 html {
   --color-accent: oklch(65% 50% 0);
   accent-color: var(--color-accent);
+  color-scheme: light dark;
 }
 
 /* Images scale down instead of overflowing on narrow screens */
@@ -30,15 +31,11 @@ h1 {
 }
 
 /* Step 2: Navigation bar styling */
-nav ul,
-nav li {
-  display: contents;
-}
-
 nav {
   display: flex;
   margin-bottom: 2em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
@@ -50,14 +47,14 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: calc(0.5em - 0.4em);
 }
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: calc(0.5em - 0.4em);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 /* Step 3: Contact form grid layout */
@@ -79,7 +76,8 @@ form button {
 
 input,
 textarea,
-button {
+button,
+select {
   font: inherit;
 }
 
@@ -116,4 +114,12 @@ main > section h3 {
 main > section article > header > p {
   margin-block: 0.25em;
   color: oklch(50% 0% 0);
+}
+
+/* Step 4: Color scheme switcher */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
