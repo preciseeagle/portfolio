@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p>Derek Pham</p>
+    </header>
+
+    <main>
+      <h2>Proposition: The global digital divide is closing.</h2>
+
+      <p>
+        Both charts below come from one dataset: the World Bank's series on the share of each
+        country's population that uses the internet (indicator IT.NET.USER.ZS), 2005 to 2021. No
+        number is changed or invented. The first chart argues the divide is closing; the
+        second argues it is not. The only thing that differs between them is how I chose to draw
+        the same numbers.
+      </p>
+
+      <section>
+        <h3>FOR the Proposition</h3>
+
+        <figure>
+          <img
+            src="fig1_deceptive_closing.png"
+            alt="Line chart, 2005 to 2021, with two different vertical axes: North America on a 0 to 100 percent left axis and Sub-Saharan Africa on a 0 to 32 percent right axis, so the two lines rise to meet near the top."
+          />
+          <figcaption>
+            Internet-user share for North America (left axis, 0 to 100%) and Sub-Saharan Africa
+            (right axis, 0 to 32%), 2005 to 2021, drawn so the two lines meet.
+          </figcaption>
+        </figure>
+
+        <h4>Design decisions</h4>
+        <ul>
+          <li>
+            <strong>Two vertical axes, one per line.</strong> North America reads on the left (0 to
+            100%) and Sub-Saharan Africa on the right (0 to 32%). Because 29% on the right axis sits
+            at the same height as 92% on the left, the two lines rise to meet and the gap looks all
+            but gone. Only the two sets of tick labels say the scales differ. <em>(deceptive, -2)</em>
+          </li>
+          <li>
+            <strong>Colour each axis to its line.</strong> The grey axis goes with the grey North
+            America line, the teal axis with the teal Sub-Saharan Africa line, so the split reads as
+            a tidy design touch, which is exactly what keeps a reader from noticing the scales are
+            different. <em>(deceptive, -1)</em>
+          </li>
+          <li>
+            <strong>One line per region, nothing underneath.</strong> Collapsing a whole region into a
+            single line hides that the countries inside it run from under 10% to over 70%. One smooth
+            climb reads as everyone rising together. <em>(deceptive, -1)</em>
+          </li>
+          <li>
+            <strong>Leave the world average off.</strong> Showing only the richest and poorest regions
+            keeps the eye on two lines converging. The world line, climbing steadily away from
+            Sub-Saharan Africa, would have given the game away. <em>(deceptive, -2)</em>
+          </li>
+        </ul>
+        <p>
+          Each choice is individually defensible, which is the point: a reader who never checks the
+          two axes leaves convinced the divide is nearly closed.
+        </p>
+      </section>
+
+      <section>
+        <h3>AGAINST the Proposition</h3>
+
+        <figure>
+          <img
+            src="fig2_earnest_persists.png"
+            alt="Two-panel figure. Left: internet-user share 2005 to 2021 on a full 0 to 100 percent axis with arrows marking how many years behind the World average Sub-Saharan Africa sits. Right: the 2021 per-country distribution with the population-weighted World average and the median country marked."
+          />
+          <figcaption>
+            Left: the same three series on a full 0-to-100% axis, with arrows marking how many years
+            behind the world average Sub-Saharan Africa sits. Right: the 2021 share for each of the
+            180 countries with data, against the population-weighted world average and the median
+            country.
+          </figcaption>
+        </figure>
+
+        <h4>Design decisions</h4>
+        <ul>
+          <li>
+            <strong>One axis for every region.</strong> North America, the world average, and
+            Sub-Saharan Africa share a single 0-to-100% scale, so the vertical distance is the real
+            gap: 29% sits as far below the world's 64% and North America's 92% as it actually is. <em>(earnest, +2)</em>
+          </li>
+          <li>
+            <strong>Measure the gap in years.</strong> Sub-Saharan Africa's 2021 level is one the world
+            average passed around 2010, so the region runs about eleven years behind, and that lag has
+            not shrunk since 2015. "Years behind" is much harder to spin than a line rising toward a
+            ceiling. <em>(earnest, +2)</em>
+          </li>
+          <li>
+            <strong>North America drawn in full, not as a ceiling.</strong> It stays on the chart near 92%
+            so the reader sees how much room is still above the world line, not a flat line the others
+            are quietly sneaking up on. <em>(earnest, +1)</em>
+          </li>
+          <li>
+            <strong>Drop the regional lines; show every country.</strong> The histogram puts all 180 countries
+            on one axis: 42 are still under half, down to Burundi at 7%. The spread the single lines
+            smoothed away becomes the point. <em>(earnest, +2)</em>
+          </li>
+          <li>
+            <strong>Label the two "averages" honestly.</strong> The population-weighted world figure (64%)
+            sits well below the median country (75%) because large, less-connected countries like
+            India (49%) pull it down, so "two-thirds of the world is online" describes a world most
+            countries are already ahead of. <em>(earnest, +1)</em>
+          </li>
+        </ul>
+        <p>
+          This design hides nothing - one shared axis, the gap in years, every country shown - and it
+          lands on the opposite conclusion.
+        </p>
+      </section>
+
+      <section>
+        <h3>Final reflection</h3>
+        <p>
+          Working both sides from one dataset made the lesson concrete: the data did not decide the
+          conclusion, my design choices did. Every number on both pages is the World Bank's and I
+          never changed a value. The "closing" chart and the "persists" chart disagree only because
+          one puts the two regions on separate scales so their lines meet, while the other puts every
+          region on one scale and states the gap in years.
+        </p>
+        <p>
+          I'd call the first chart deceptive and the second earnest, and the gap between them is what
+          the design asks the reader to forget. The second axis and the missing world line are not
+          lies - a statistician would sign off on each choice on its own - but together they draw a
+          29% at the same height as a 92% and bury the countries inside one regional line. The second
+          chart withholds nothing: one shared axis, the gap stated in years, and every country shown,
+          including the ones still under 10%. It is the less flattering chart, and I think the more
+          honest one.
+        </p>
+        <p>
+          Where I'd draw the line: persuasion chooses which true thing to emphasize; deception chooses
+          a true framing precisely because it expects the reader to misread it. A second axis to compare
+          two series with very different ranges is sometimes fair. Two axes lined up so a 29% meets a
+          92%, under a title about "closing in," are chosen so the reader concludes the gap is almost
+          gone. Same data, two scales - the intent is the whole difference.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
