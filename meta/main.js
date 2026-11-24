@@ -313,6 +313,16 @@ function updateFileDisplay(filteredCommits) {
     .attr("style", (d) => `--color: ${colors(d.type)}`);
 }
 
+// Color key for the file-type dots below (reuses the site's .legend system).
+function renderFileLegend() {
+  d3.select("#file-legend")
+    .selectAll("li")
+    .data(colors.domain())
+    .join("li")
+    .attr("class", "legend-item")
+    .html((type) => `<span class="swatch" style="--color: ${colors(type)}"></span> ${type}`);
+}
+
 function onStepEnter(response) {
   updateVisualization(response.element.__data__.datetime);
 }
@@ -332,6 +342,7 @@ document
   .getElementById("commit-progress")
   .addEventListener("input", onTimeSliderChange);
 onTimeSliderChange();
+renderFileLegend();
 
 d3.select("#scatter-story")
   .selectAll(".step")
@@ -342,7 +353,7 @@ d3.select("#scatter-story")
     (d, i) => `
       On ${d.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })},
       I made <a href="${d.url}" target="_blank">${
-        i > 0 ? "another glorious commit" : "my first commit, and it was glorious"
+        i > 0 ? "another commit" : "my first commit to this site"
       }</a>.
       I edited ${d.totalLines} lines across ${
         d3.rollups(d.lines, (v) => v.length, (d) => d.file).length
